@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strconv"
+)
 
 func main() {
 	// var name = "Kola booking"
@@ -30,7 +33,27 @@ func main() {
 		fmt.Printf("%v\n %v\n ", i, booking)
 	}
 	i := 20
-	for i <100 {
-		fmt.Printf("%v", i)
+	for i < 100 {
+		fmt.Printf("%v\n", i)
+		i = i + 1
 	}
+	city := "London"
+
+	switch city {
+	case "London":
+		fmt.Print(city)
+	case "Angeles":
+		fmt.Print(city)
+	default:
+		fmt.Printf("%v \n", city)
+	}
+
+	greetUser()
+}
+
+func greetUser() {
+	var name string
+	fmt.Scanf("%s", &name)
+	age, _ := strconv.Atoi(name)
+	fmt.Printf("you entered %v", age)
 }
