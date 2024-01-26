@@ -5,7 +5,33 @@ import (
 	"strconv"
 )
 
+type point struct {
+	x float32
+	y float32
+	z float32
+
+	func (p point) length() float64 {
+		return math.Sqrt(
+		(math.Pow(float64(p.x), 2) +
+		math.Pow(float64(p.y), 2) +
+		math.Pow(float64(p.z), 2)))
+		}
+}
+
+
+func constructor(x, y, z float32) *point {
+	p := point{x: x, y: y, z: z}
+	return &p
+	}
+type Node struct{
+	next Node
+
+}
 func main() {
+	jultiArrayCreator()
+my_map:= make(map[string] int)
+my_map["kola"] = 89
+
 	// var name = "Kola booking"
 	// fmt.Printf("Welcome %v to booking app \n", name)
 
@@ -49,6 +75,11 @@ func main() {
 	}
 
 	greetUser()
+	if v, err := doSth(); !err {
+		//
+	} else {
+		fmt.Printf("%v", v)
+	}
 }
 
 func greetUser() {
@@ -56,4 +87,27 @@ func greetUser() {
 	fmt.Scanf("%s", &name)
 	age, _ := strconv.Atoi(name)
 	fmt.Printf("you entered %v", age)
+}
+
+func checker() bool {
+	num := 6
+	condition := num%2 == 0
+	return condition
+}
+
+func doSth() (int, bool) {
+	for pos, char := range "Hello, world!" {
+		fmt.Println("\n", pos, char)
+	}
+	return 20, false
+}
+
+func jultiArrayCreator() {
+	table := [5][6]string{}
+	for row := 0; row < 5; row++ {
+		for col := 0; col < 6; col++ {
+			table[row][col] = strconv.Itoa(row) + "," + strconv.Itoa(col)
+		}
+	}
+	fmt.Printf("%v \n", table)
 }
