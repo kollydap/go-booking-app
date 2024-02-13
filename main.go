@@ -18,7 +18,7 @@ type Person struct {
 }
 
 func main() {
-
+	jsonParser()
 	i := 20
 	for i < 100 {
 		fmt.Printf("%v\n", i)
@@ -77,7 +77,7 @@ type User struct {
 
 func jsonParser() {
 	var user User
-	var userlist [] User
+	var userlist []User
 	json_string := `{
 		"firstname": "kolawole",
 		"age":40
@@ -97,7 +97,9 @@ func jsonParser() {
 	if err != nil {
 		panic("ouch")
 	}
-	err = json.Unmarshal([]byte(json_string), &userlist)
-	
+	error := json.Unmarshal([]byte(json_string), &userlist)
+	if error != nil{
+		panic("ouch")
+	}
 
 }
