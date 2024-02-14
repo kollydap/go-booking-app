@@ -18,11 +18,19 @@ type Person struct {
 }
 
 func main() {
+	a := new(Peson)
+	a.name = "kolawole"
+	a.Talk()
 	jsonParser()
 	i := 20
 	for i < 100 {
 		fmt.Printf("%v\n", i)
 		i = i + 1
+	}
+
+	arr := []string{"name", "kola", "osagie"}
+	for _, val := range arr {
+		println(val)
 	}
 
 	var person_map = make(map[int]Person)
@@ -76,7 +84,7 @@ type User struct {
 }
 
 func jsonParser() {
-	var user User
+	// var user User
 	var userlist []User
 	json_string := `{
 		"firstname": "kolawole",
@@ -93,13 +101,46 @@ func jsonParser() {
 		}
 	]`
 
-	err := json.Unmarshal([]byte(json_string), &user)
-	if err != nil {
-		panic("ouch")
-	}
+	// err := json.Unmarshal([]byte(json_string), &user)
+	// if err != nil {
+	// 	panic("ouh")
+	// }
 	error := json.Unmarshal([]byte(json_string), &userlist)
-	if error != nil{
+	if error != nil {
 		panic("ouch")
 	}
+	fmt.Printf("%v", userlist)
 
+}
+
+type VAluestring string
+
+type DigitCounter interface {
+	CountOddEven() (int, int)
+}
+
+// func (val VAluestring) CountOddEven(int, int) {
+// 	odds, evens := 0, 0
+// 	for _, digit := range val {
+// 		if digit%2 == 0 {
+// 			evens++
+// 		} else {
+// 			odds++
+// 		}
+// 	}
+// 	return odds, evens
+// }
+
+type Peson struct {
+	name, color string
+	age, height int
+}
+
+func (person *Peson) Talk() {
+	fmt.Println("Hi, my name is", person.name)
+}
+
+type Andriod struct {
+	Peson
+	Model string
 }
